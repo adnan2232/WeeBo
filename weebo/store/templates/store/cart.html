@@ -1,0 +1,58 @@
+
+{% extends 'store/main.html'%}
+{% load static%}
+
+{%block content%}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+          <a class="btn btn-outline-dark" href="{%url 'store'%}">&#8592; Continue Shopping</a>
+          <br>
+          <br>
+          <table class="table">
+              <th><h5>Items: <strong>{{order.get_cart_items}}</strong></h6></th>
+              <th><h5>Total: <strong>₹{{order.get_cart_total|floatformat:2}}</strong></h6></th>
+              <th>
+                  {% if user.is_authenticated %}
+                    <a class="btn btn-outline-secondary checkout" href="{%url 'checkout' %}">
+                        Checkout
+                    </a>
+                  {% else %}
+                    <a class="btn btn-outline-secondary checkout" href="#">
+                        Login first
+                    </a>
+                  {% endif %}
+              </th>
+          </table>
+
+        </div>
+        <br>
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2"></div>
+                <div style="flex:2"><strong>Item</strong></div>
+                <div style="flex:1"><strong>Price</strong></div>
+                <div style="flex:1"><strong>Quantity</strong></div>
+                <div style="flex:1"><strong>Total</strong></div>
+            </div>
+            {% for item in items %}
+            <div class="cart-row">
+                <div style="flex:2"><a href="#"><img src="{{item.product.imageURL}}" class="row-image"></a></div>
+                <div style="flex:2">{{item.product.name}}</div>
+                <div style="flex:1">₹{{item.product.price|floatformat:2}}</div>
+                <div style="flex:1">
+                    <p class="quantity">{{item.quantity}}</p>
+                    <div class="quantity">
+                        <img src="{%static 'image/arrow-up.png'%}" class="chg-quantity">
+                        <img src="{%static 'image/arrow-down.png'%}" class="chg-quantity">
+                    </div>
+                </div>
+                <div style="flex:1">₹{{item.get_total}}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{%endblock%}
