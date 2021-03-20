@@ -1,2 +1,2 @@
-# WeeBo
+# weebo
  
