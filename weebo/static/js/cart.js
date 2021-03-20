@@ -28,5 +28,8 @@ function UpdateUserOrder(productId,action){
         body: JSON.stringify({'productId':productId, 'action':action})
     }).then((response) =>{
         return response.json()
-    }).then((data)=> {console.log('data: ',data)})
+    }).then((data)=> {
+        console.log('data: ',data)
+        location.reload()
+    })  
 }
