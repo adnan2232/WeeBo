@@ -44,7 +44,16 @@
             </li>
        
           </ul>
-          <div class="form-inline my-2 my-lg-0">
+          <form action="{% url 'store'%}" method="GET">
+            <select class="form-select btn-light selection" aria-label="Default select example" name="selection" onchange='this.form.submit()'>
+              <option value="all" >Category</option>
+              <option value="shirt">Shirt</option>
+              <option value="t-shirt">T-Shirt</option>
+              <option value="trouser">Trousers</option>
+              
+            </select>
+            <noscript><input type="submit" value="Submit"></noscript>
+          </form>
              <a href="#"class="btn btn-light">Login</a>
              
              <a href="{% url 'cart' %}">

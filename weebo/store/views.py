@@ -13,8 +13,12 @@ def store(request):
         items = []
         order = {"get_cart_items":0,"get_cart_total":0}
         cartItems = order["get_cart_items"]
+    cat = request.GET.get("selection")
+    
     products = Product.objects.all()
-    context = {'products':products, "cartItems": cartItems}
+    
+    
+    context = {'products':products, "cartItems": cartItems,"cat":cat}
     return render(request,'store/store.html',context)
 
 def cart(request):
