@@ -46,7 +46,8 @@
           </ul>
           <form action="{% url 'store'%}" method="GET">
             <select class="form-select btn-light selection" aria-label="Default select example" name="selection" onchange='this.form.submit()'>
-              <option value="all" >Category</option>
+              <option selected >Category</option>
+              <option value="all">ALL</option>
               <option value="shirt">Shirt</option>
               <option value="t-shirt">T-Shirt</option>
               <option value="trouser">Trousers</option>

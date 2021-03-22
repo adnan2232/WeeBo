@@ -3,7 +3,7 @@
 {%block content%}
 <div class="row">
     {% for product in products%}
-    {% if cat == product.categories or cat == None %}
+    {% if cat == product.categories or cat == None or cat == 'all'%}
     <div class = "col-lg-4">
         <img class="thumbnail" src = "{{product.imageURL}}">
         <div class="box-element product">
