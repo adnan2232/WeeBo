@@ -16,7 +16,7 @@ class Product(models.Model):
     CATEGORY = (('shirt','SHIRT'), ('t-shirt','T-SHIRT'),('trouser','TROUSER'))
     categories = models.CharField(max_length=7,choices=CATEGORY,default='shirt')
     image = models.ImageField(null=True,blank = True)
-
+    stock = models.IntegerField(default = 0)
     def __str__(self):
         return self.name
 

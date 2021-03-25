@@ -44,7 +44,9 @@
                 <div style="flex:1">
                     <p class="quantity">{{item.quantity}}</p>
                     <div class="quantity">
+                        {% if item.product.stock > 0 %}
                         <img  data-product={{item.product.id}} data-action="add" src="{%static 'image/arrow-up.png'%}" class="chg-quantity update-cart">
+                        {% endif %}
                         <img data-product={{item.product.id}} data-action="remove"src="{%static 'image/arrow-down.png'%}" class="chg-quantity update-cart">
                     </div>
                 </div>
