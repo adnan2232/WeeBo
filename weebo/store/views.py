@@ -15,8 +15,14 @@ def store(request):
         order = {"get_cart_items":0,"get_cart_total":0}
         cartItems = order["get_cart_items"]
     cat = request.GET.get("selection")
+
+    query = request.GET.get('search','')
     
-    products = Product.objects.all()
+
+    if len(query) > 0:
+        products = Product.objects.filter(name__icontains=query)
+    else:
+        products = Product.objects.all()
     
     
     context = {'products':products, "cartItems": cartItems,"cat":cat}
