@@ -100,7 +100,7 @@
             body: JSON.stringify({'form': userFormData,'shipping':shippingInfo}),
         }).then((response)=> response.json()).then((data)=>{
             console.log("Success: ",data);
-            alert('Transaction Completed');
+            alert('You will get update through email of your ordered item');
             window.location.href = "{% url 'store'%}"
         })
     }

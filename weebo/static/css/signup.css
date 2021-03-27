@@ -2,7 +2,10 @@ body,html {
 			margin: 0;
 			padding: 0;
 			height: 100%;
-			background: linear-gradient(115deg, #e8eaeb 10%, #070707 90%)!important;
+			background-image:url(../image/bg.jpeg);
+			background-blend-mode: luminosity;
+			background-repeat: no-repeat;
+			background-size: cover;
 		}
 		.user_card {
 			width:550px;
