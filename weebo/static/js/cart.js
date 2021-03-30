@@ -6,7 +6,7 @@ for(var i=0;i<updateBtns.length;i++){
         var action = this.dataset.action;
         console.log("productId: ",productId," action: ",action);
         if(user==="AnonymousUser"){
-            console.log("User is not authenticate");
+            addCookieItem(productId,action);
         }
         else{
             UpdateUserOrder(productId,action);
@@ -16,7 +16,30 @@ for(var i=0;i<updateBtns.length;i++){
 
 
 
+function addCookieItem(productId,action){
+    console.log("User is not authenticate");
 
+    if(action==="add"){
+        if(cart[productId] === undefined){
+            cart[productId] = {"quantity":1};
+        }else{
+            cart[productId]["quantity"] +=1;
+        }
+    }
+
+    if(action==="remove"){
+        cart[productId]["quantity"] -=1;
+        if (cart[productId]["quantity"] <=0){
+            console.log("Product removed");
+            delete cart[productId];
+        }
+    }
+    console.log("Cart: ",cart);
+
+    document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/";
+    location.reload();
+
+}
 
 function UpdateUserOrder(productId,action){
     fetch('/update_item',{
