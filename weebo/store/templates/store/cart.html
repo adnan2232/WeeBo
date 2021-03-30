@@ -15,9 +15,15 @@
               <th><h5>Total: <strong>₹{{order.get_cart_total|floatformat:2}}</strong></h6></th>
               <th>
                   {% if user.is_authenticated %}
-                    <a class="btn btn-outline-secondary checkout" href="{%url 'checkout' %}">
-                        Checkout
-                    </a>
+                    {% if cartItems > 0 %}
+                        <a class="btn btn-outline-secondary checkout" href="{%url 'checkout' %}">
+                            Checkout
+                        </a>
+                    {%else%}
+                    <h5 style="float:right;">
+                        Your cart is empty
+                    </h5>
+                    {% endif %}
                   {% else %}
                     <a class="btn btn-outline-secondary checkout" href="{%url 'login'%}">
                         Login first
