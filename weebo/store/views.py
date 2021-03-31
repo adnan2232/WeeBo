@@ -125,7 +125,7 @@ def processOrder(request):
         connection = mail.get_connection()
         connection.open()
         email1 = mail.EmailMessage(
-            subject = 'Hi '+customer.name+" your order has been received",
+            subject = 'Hi '+customer.name+" your transaction id:"+str(transaction_id),
             body = 'Please check your invoice given in attachment',
             from_email = 'ww2232785@gmail.com',
             to = [customer.email],
