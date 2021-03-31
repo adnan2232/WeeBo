@@ -1,3 +1,4 @@
+from django.db import connection
 from django.shortcuts import redirect, render
 from .models import *
 from django.http import JsonResponse
@@ -8,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from .utils import cookieCart
+from django.core import mail
 
 def store(request):
     if request.user.is_authenticated:
@@ -119,6 +121,20 @@ def processOrder(request):
         state = data["shipping"]["state"],
         zipcode = data["shipping"]["zipcode"],
     )
+    try:
+        connection = mail.get_connection()
+        connection.open()
+        email1 = mail.EmailMessage(
+            subject = 'Hi '+customer.name+" your order has been received",
+            body = 'Please check your invoice given in attachment',
+            from_email = 'ww2232785@gmail.com',
+            to = [customer.email],
+        )
+        email1.send()
+        connection.close()
+    except:
+        print("oops some error")
+
 
     return JsonResponse('Payment successfully',safe=False)
 
