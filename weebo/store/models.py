@@ -17,8 +17,7 @@ class Product(models.Model):
     categories = models.CharField(max_length=7,choices=CATEGORY,default='shirt')
     image = models.ImageField(null=True,blank = True)
     stock = models.IntegerField(default = 0)
-    def __str__(self):
-        return self.name
+    
 
     @property
     def imageURL(self):
@@ -27,6 +26,8 @@ class Product(models.Model):
         except:
             url = ''
         return url
+    def __str__(self) :
+        return self.name
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL,blank=True,null=True)
@@ -58,6 +59,8 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.product.price * self.quantity
         return total
+    def __str__(self):
+        return self.product.name
     
 
 class ShippingAddress(models.Model):
@@ -71,3 +74,11 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+
+class Ordered(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL,blank=True,null=True)
+    order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null= True)
+    address = models.ForeignKey(ShippingAddress,on_delete=models.SET_NULL, blank=True, null= True)
+    datetime = models.DateTimeField(auto_now_add=True, blank=True)
+    class Meta:
+        ordering = ['-datetime']

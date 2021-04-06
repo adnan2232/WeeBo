@@ -113,7 +113,7 @@ def processOrder(request):
 
     order.save()
 
-    ShippingAddress.objects.create(
+    address = ShippingAddress.objects.create(
         customer = customer,
         order = order,
         address = data["shipping"]["address"],
@@ -121,7 +121,9 @@ def processOrder(request):
         state = data["shipping"]["state"],
         zipcode = data["shipping"]["zipcode"],
     )
-    try:
+    ordered = Ordered.objects.create(customer = customer,order = order,address = address)
+
+    '''try:
         connection = mail.get_connection()
         connection.open()
         email1 = mail.EmailMessage(
@@ -133,7 +135,7 @@ def processOrder(request):
         email1.send()
         connection.close()
     except:
-        print("oops some error")
+        print("oops some error")'''
 
 
     return JsonResponse('Payment successfully',safe=False)
