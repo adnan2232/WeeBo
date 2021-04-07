@@ -28,6 +28,8 @@ class Product(models.Model):
         return url
     def __str__(self) :
         return self.name
+    class Meta:
+        ordering = ['-stock']
 
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL,blank=True,null=True)

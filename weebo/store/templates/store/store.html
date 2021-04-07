@@ -16,8 +16,27 @@
             <p style="color: red; display: inline-block">Not in stock</p>
             {% endif %}
             <button class="btn btn-outline-dark view">View</button>
+
             
             <h4 style="display: inline-block; float:right;">₹{{product.price|floatformat:2}}</h4>
+        </div>
+    </div>
+    <div class="pops hidden">
+        <div class="popup">
+            <div class="center">
+                <img src="https://img.icons8.com/windows/24/000000/macos-close.png" class="closebtn">
+                <h3 class="heading" style="display: inline-block;" ><strong>{{product.name}} </strong></h3>
+                <img class="tb1" src = "{{product.imageURL}}">  
+                <p class="data" style="text-justify: left;">
+                    {{product.description}}
+                </p>
+                <h5 style="float:right;">Instock: {{product.stock}}</h5> 
+                <h4 style="display: inline-block; float:left;">₹{{product.price|floatformat:2}}</h4> 
+                <div class="btn1" style="display: inline-block; background-color:white ;width:100%; margin: 5px;">
+                    <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary addbtn update-cart">Add to Cart</button>
+                    <button class="btn1 btn-outline-dark">View On Amazon</button>
+                </div>
+            </div>
         </div>
     </div>
   
