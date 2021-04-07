@@ -178,12 +178,23 @@ h1,h2,h3,h4,h5,h6{
 	cursor: pointer;
 	background-color: black;
 	margin: 2px;
+	
+	
+}
+.btn1 a{
+	text-decoration: none;
+	width: 100%;
 	color: cornsilk;
 }
 .btn1:hover{
 	background-color: white;
 	color: #141718;
 }
+.btn1 a:hover{
+	background-color: white;
+	color: #141718;
+}
+
 
 .tb1{
 	width: 100%;

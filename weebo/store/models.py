@@ -17,6 +17,7 @@ class Product(models.Model):
     categories = models.CharField(max_length=7,choices=CATEGORY,default='shirt')
     image = models.ImageField(null=True,blank = True)
     stock = models.IntegerField(default = 0)
+    amazon = models.CharField(max_length=500,blank=False,default="#")
     
 
     @property
