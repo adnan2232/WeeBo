@@ -83,5 +83,7 @@ class Ordered(models.Model):
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, blank=True, null= True)
     address = models.ForeignKey(ShippingAddress,on_delete=models.SET_NULL, blank=True, null= True)
     datetime = models.DateTimeField(auto_now_add=True, blank=True)
+    ORDERS = (("ordered","ORDERED"),("packed","PACKED"),("shipped","SHIPPED"),("delivered","DELIVERED"))
+    orderstatus = models.CharField(max_length=20,choices=ORDERS,default="ordered")
     class Meta:
         ordering = ['-datetime']

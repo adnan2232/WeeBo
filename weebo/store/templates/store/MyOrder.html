@@ -1,0 +1,52 @@
+{% extends 'store/main.html'%}
+{% load static %}
+
+{% block content %}
+{% for ordered in myorder%}
+<div class="card">
+    <div class="title">Purchase Reciept</div>
+    <div class="info">
+        <div class="row">
+            <div class="col-7"> <span id="heading">Date</span><br> <span id="details">{{ordered.datetime}}</span> </div>
+            <div class="col-5 pull-right"> <span id="heading">Order Id.</span><br> <span id="details">{{ordered.order.transaction_id}}</span> </div>
+        </div>
+    </div>
+    <div class="info">
+        <div class="row">
+            <div class="col-5"> <span id="name"><b>Product</b></span> </div>
+            <div class="col-4" > <span id="price" ><b>Quantity</b></span> </div>
+            <div class="col-3" > <span id="price" ><b>Price</b></span> </div>
+        </div>
+    </div>
+    <div class="pricing">
+        {%for item in ordered.order.orderitem_set.all%}
+        <div class="row">
+            <div class="col-6"> <span id="name">{{item.product.name}}</span> </div>
+            <div class="col-3" > <span id="price" >x{{item.quantity}}</span> </div>
+            <div class="col-3" > <span id="price" >₹{{item.get_total}}</span> </div>
+        </div>
+        {% endfor%}
+    </div>
+    <div class="total">
+        <div class="row">
+            <div class="col-9">Total</div>
+            <div class="col-3"><big>₹{{ordered.order.get_cart_total}}</big></div>
+        </div>
+    </div>
+    <div class="total">
+        <div class="row">
+            <div class="col-9">Order Status</div>
+            <div class="col-3"><big>{{ordered.orderstatus}}</big></div>
+        </div>
+    </div>
+
+    
+</div>
+{%endfor%}
+<div class="footer">
+    <div class="row">
+        <div class="col-10">Want any help? Please &nbsp; contact us: 1800 ****</div>
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="{%static 'css/myorder.css'%}?{% now 'U'%}">
+{%endblock%}

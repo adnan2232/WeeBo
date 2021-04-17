@@ -1,0 +1,94 @@
+
+
+.card {
+    margin: auto;
+    width: 75%;
+    max-width: 600px;
+    padding: 4vh 0;
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-top: 3px solid #141718;
+    border-bottom: 3px solid #141718;
+    border-left: none;
+    border-right: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media(max-width:768px) {
+    .card {
+        width: 90%
+    }
+}
+
+.title {
+    color: #141718;
+    font-weight: 600;
+    margin-bottom: 2vh;
+    padding: 0 8%;
+    font-size: initial
+}
+
+#details {
+    font-weight: 400
+}
+
+.info {
+    padding: 5% 8%
+}
+
+.info .col-5 {
+    padding: 0
+}
+
+#heading {
+    color: grey;
+    line-height: 6vh
+}
+
+.pricing {
+    background-color: #ddd3;
+    padding: 2vh 8%;
+    font-weight: 400;
+    line-height: 2.5
+}
+
+.pricing .col-3 {
+    padding: 0
+}
+
+.total {
+    padding: 2vh 8%;
+    color: #141718;
+    font-weight: bold
+}
+
+.total .col-3 {
+    padding: 0
+}
+
+.footer {
+    padding: 0 8%;
+    font-size: x-small;
+    color: black
+}
+
+.footer img {
+    height: 5vh;
+    opacity: 0.2
+}
+
+.footer a {
+    color: #141718;
+}
+
+.footer .col-10,
+.col-2 {
+    display: flex;
+    padding: 3vh 0 0;
+    align-items: center
+}
+
+.footer .row {
+    margin: 0
+}
+

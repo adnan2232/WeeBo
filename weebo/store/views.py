@@ -182,3 +182,27 @@ def register(request):
 def logoutUser(request):
     logout(request)
     return redirect('store')
+
+def myOrder(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer
+        order, created = Order.objects.get_or_create(customer=customer, complete = False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        cookieData = cookieCart(request)
+        try:
+            items = cookieData["items"]
+            order = cookieData["order"]
+            cartItems = cookieData["cartItems"]
+        except:
+            items = []
+            order = {"get_cart_items":0,"get_cart_total":0}
+            cartItems = order["get_cart_items"]
+
+    customer = request.user.customer
+    myorder = Ordered.objects.filter(customer=customer)
+
+    
+    context = {"items":items, "order":order, "cartItems": cartItems,"myorder":myorder}
+    return render(request,'store/MyOrder.html',context)

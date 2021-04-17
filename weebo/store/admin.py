@@ -15,5 +15,5 @@ admin.site.register(OrderItem,OrderItemAdmin)
 admin.site.register(ShippingAddress)
 
 class OrderedAdmin(admin.ModelAdmin):
-    list_display = ('customer','order','datetime','address')
+    list_display = ('customer','order','datetime','orderstatus','address')
 admin.site.register(Ordered,OrderedAdmin)
