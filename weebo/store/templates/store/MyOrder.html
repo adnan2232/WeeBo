@@ -13,23 +13,25 @@
     </div>
     <div class="info">
         <div class="row">
-            <div class="col-5"> <span id="name"><b>Product</b></span> </div>
-            <div class="col-4" > <span id="price" ><b>Quantity</b></span> </div>
-            <div class="col-3" > <span id="price" ><b>Price</b></span> </div>
+            <div class="col-3"> <span id="name"><b>Product</b></span> </div>
+            <div class="col-3"> <span id="price" ><b>Price</b></span> </div>
+            <div class="col-3"> <span id="price" ><b>Quantity</b></span> </div>
+            <div class="col-3"><span id="price" ><b>Total</b></span></div>
         </div>
     </div>
     <div class="pricing">
         {%for item in ordered.order.orderitem_set.all%}
         <div class="row">
-            <div class="col-6"> <span id="name">{{item.product.name}}</span> </div>
-            <div class="col-3" > <span id="price" >x{{item.quantity}}</span> </div>
+            <div class="col-3"> <span id="name">{{item.product.name}}</span> </div>
+            <div class="col-3" > <span id="price" style="padding-left: 10px;" >₹{{item.product.price}}</span> </div>
+            <div class="col-3" > <span id="price" style="padding-left: 25px;" > x{{item.quantity}}</span> </div>
             <div class="col-3" > <span id="price" >₹{{item.get_total}}</span> </div>
         </div>
         {% endfor%}
     </div>
     <div class="total">
         <div class="row">
-            <div class="col-9">Total</div>
+            <div class="col-9">Total Price</div>
             <div class="col-3"><big>₹{{ordered.order.get_cart_total}}</big></div>
         </div>
     </div>
